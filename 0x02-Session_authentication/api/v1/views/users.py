@@ -58,16 +58,7 @@ def delete_user(user_id: str = None) -> str:
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def create_user() -> str:
-    """ POST /api/v1/users/
-    JSON body:
-      - email
-      - password
-      - last_name (optional)
-      - first_name (optional)
-    Return:
-      - User object JSON represented
-      - 400 if can't create the new User
-    """
+    """POST /api/v1/users/"""
     rj = None
     error_msg = None
     try:
@@ -96,17 +87,7 @@ def create_user() -> str:
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def update_user(user_id: str = None) -> str:
-    """ PUT /api/v1/users/:id
-    Path parameter:
-      - User ID
-    JSON body:
-      - last_name (optional)
-      - first_name (optional)
-    Return:
-      - User object JSON represented
-      - 404 if the User ID doesn't exist
-      - 400 if can't update the User
-    """
+    """PUT /api/v1/users/:id."""
     if user_id is None:
         abort(404)
     user = User.get(user_id)
